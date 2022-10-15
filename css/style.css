@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap');
+.containerCards{
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    
+}
+div.container-fluid a.navbar-brand{
+    font-family: 'Comforter Brush', cursive;
+    font-weight: bold;
+    font-size: 2rem;
+}
+img.card-img-top.manga{
+    height: 26rem;
+    width: auto;
+}
+img.card-img-top.genero{
+    height: 12rem;
+    width: auto;
+}
+a{
+    text-decoration: none;
+}
+
+form.formLogin{
+    width: 30rem;
+    margin-top: 1rem;
+    margin-bottom: 10rem;
+
+    
+}
+div.alert.alert-danger{
+    width: 30rem;
+    padding-top: 1rem;
+}
+footer p {
+    display: flex;
+    justify-content: center;
+    color: gray;
+}
+ #navbarNav{ /*ya es flex por boostrap */
+    justify-content: space-between;
+
+}
+#saludoUsuario{
+    padding-top: 1rem;
+}
