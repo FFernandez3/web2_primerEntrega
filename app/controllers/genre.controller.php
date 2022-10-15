@@ -14,7 +14,7 @@ class GenreController
     {
         $this->model = new  GenreModel();
         $this->view = new GenreView();
-        $this->mangaModel=new MangaModel();
+        $this->mangaModel = new MangaModel();
         $this->authHelper = new AuthHelper();
     }
     public function showGenres()
