@@ -15,7 +15,6 @@ class AuthController
         $this->view = new  AuthView();
         $this->model = new UserModel();
         $this->authHelper = new AuthHelper();
-        
     }
     function showLogin()
     {
@@ -35,7 +34,7 @@ class AuthController
             if ($user && password_verify($password, $user->password)) { //si el usuario existe y las contraseñas coinciden
                 //inicio sesion
                 $this->authHelper->open_session();
-                
+
                 //guardo estos datos
                 $_SESSION['USER_ID'] = $user->id_usuario;
                 $_SESSION['USER_EMAIL'] = $user->email;

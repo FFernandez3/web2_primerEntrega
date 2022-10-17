@@ -6,7 +6,6 @@ require_once './app/helpers/auth.helper.php';
 class GenreController
 {
     private $model;
-    private $mangaModel;
     private $view;
     private $authHelper;
 
@@ -14,7 +13,6 @@ class GenreController
     {
         $this->model = new  GenreModel();
         $this->view = new GenreView();
-        $this->mangaModel = new MangaModel();
         $this->authHelper = new AuthHelper();
     }
     public function showGenres()
@@ -80,7 +78,7 @@ class GenreController
     {
         $this->authHelper->checkLoggedIn();
         $genre = $this->model->getGenre($id); //traigo el genero para obtener la ruta a la imagen
-        $mangas = $this->mangaModel->getAllMangasFromGenre($id);
+        $mangas = $this->genreModel->getAllMangasFromGenre($id);
         if (empty($mangas)) {
             $this->model->deleteGenreById($id);
             unlink($genre->imagen); //borro la imagen de mi carpeta images
@@ -92,10 +90,10 @@ class GenreController
         }
     }
     //listo los mangas de un determinado genero
-    // function listMangasFromGenre($id)
-    // {
-    //     $this->authHelper->open_session();
-    //     $mangas = $this->model->getAllMangasFromGenre($id);
-    //     $this->view->listMangasFromThisGenre($mangas);
-    // }
+    function listMangasFromGenre($id)
+    {
+        $this->authHelper->open_session();
+        $mangas = $this->model->getAllMangasFromGenre($id);
+        $this->view->listMangasFromThisGenre($mangas);
+    }
 }

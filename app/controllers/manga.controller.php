@@ -19,8 +19,6 @@ class MangaController
         $this->genreModel = new GenreModel();
 
         $this->authHelper = new AuthHelper();
-        //barrera que este loggeado, si lo pongo aca todo seria privado
-        // $this->authHelper->checkLoggedIn();
     }
 
     public function showMangas()
@@ -97,15 +95,9 @@ class MangaController
     public function deleteManga($id)
     {
         $this->authHelper->checkLoggedIn();
-        $manga = $this->model->getManga($id); //traigo el manga para obtener despues la ruta a la portada
+        $manga = $this->model->getManga($id); //traigo el manga para obtener  la ruta a la portada
         $this->model->deleteMangaById($id);
         unlink($manga->portada); // eliminar de mi directorio la imagen
         header("Location: " . BASE_URL);
-    }
-    function listMangasFromGenre($idGenre)
-    {
-        $this->authHelper->open_session();
-        $mangas = $this->model->getAllMangasFromGenre($idGenre);
-        $this->view->listMangasFromThisGenre($mangas);
     }
 }

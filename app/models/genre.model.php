@@ -28,16 +28,16 @@ class GenreModel
 
         return $genre;
     }
-    // function getAllMangasFromGenre($id)
-    // { //le paso el id del genero 
-    //     //selecciono el nombre del manga y su id
-    //     $query = $this->db->prepare("SELECT manga.titulo, manga.id, manga.id_genero_fk  FROM `genero` INNER JOIN `manga` ON genero.id_genero=manga.id_genero_fk WHERE genero.id_genero=?");
-    //     $query->execute([$id]);
+    function getAllMangasFromGenre($id)
+    { //le paso el id del genero 
+        //selecciono el nombre del manga y su id
+        $query = $this->db->prepare("SELECT manga.titulo, manga.id, manga.id_genero_fk  FROM `genero` INNER JOIN `manga` ON genero.id_genero=manga.id_genero_fk WHERE genero.id_genero=?");
+        $query->execute([$id]);
 
-    //     $mangasFromGenre = $query->fetchAll(PDO::FETCH_OBJ);
+        $mangasFromGenre = $query->fetchAll(PDO::FETCH_OBJ);
 
-    //     return $mangasFromGenre;
-    // }
+        return $mangasFromGenre;
+    }
 
 
     function insertGenre($name, $description, $image = null)
@@ -54,10 +54,10 @@ class GenreModel
 
     function deleteGenreById($id)
     {
-        //$genre=$this->getGenre($id);
+        
         $query = $this->db->prepare('DELETE FROM genero WHERE id_genero = ?');
         $query->execute([$id]);
-        //unlink($genre->imagen);
+      
 
     }
     function editGenre($name, $description, $image = null, $id)

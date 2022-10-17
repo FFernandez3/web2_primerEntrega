@@ -20,10 +20,9 @@ class MangaModel
 
     function deleteMangaById($id)
     {
-        //$manga=$this->getManga($id);
+
         $query = $this->db->prepare('DELETE FROM manga WHERE id = ?');
         $query->execute([$id]);
-        //unlink($manga->portada);
     }
 
     function insertManga($title, $author, $synopsis, $publishingHouse, $coverPage = null, $genre)
@@ -49,16 +48,7 @@ class MangaModel
 
         return $manga;
     }
-    function getAllMangasFromGenre($id)
-    { //le paso el id del genero 
-        //selecciono el nombre del manga y su id
-        $query = $this->db->prepare("SELECT manga.titulo, manga.id, manga.id_genero_fk  FROM `manga` INNER JOIN `genero` ON manga.id_genero_fk=genero.id_genero WHERE manga.id_genero_fk=?");
-        $query->execute([$id]);
 
-        $mangasFromGenre = $query->fetchAll(PDO::FETCH_OBJ);
-
-        return $mangasFromGenre;
-    }
     function editManga($title, $author, $synopsis, $publishingHouse, $coverPage = null, $genre, $id)
     {
         $query = $this->db->prepare('UPDATE manga  SET titulo=?, autor=?, sinopsis=?, editorial=?, portada=?, id_genero_fk=? WHERE id = ?');

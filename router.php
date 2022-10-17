@@ -14,7 +14,7 @@ $params = explode('/', $action);
 
 // instancio controladores
 $mangaController = new MangaController();
-$genreController=new GenreController();
+$genreController = new GenreController();
 
 // tabla de ruteo
 switch ($params[0]) {
@@ -27,53 +27,53 @@ switch ($params[0]) {
         $authController->validateUser();
         break;
     case 'logout':
-        $authController=new AuthController();
+        $authController = new AuthController();
         $authController->logout();
         break;
-    case 'list':    
+    case 'list':
         $mangaController->showMangas();
         break;
-    case 'show':   
+    case 'show':
         $id = $params[1];
         $mangaController->showManga($id);
         break;
     case 'addManga':
-       
+
         $mangaController->addManga();
         break;
-    case 'editManga':   
-        $id=$params[1];
+    case 'editManga':
+        $id = $params[1];
         $mangaController->editManga($id);
         break;
     case 'delete':
         $id = $params[1];
         $mangaController->deleteManga($id);
         break;
-    case 'showGenres':     
+    case 'showGenres':
         $genreController->showGenres();
         break;
-    case 'showGenre':       
-            $id = $params[1];
-            $genreController->showGenre($id);
-            break;
-    case 'listMangasFormGenre':
-       
+    case 'showGenre':
         $id = $params[1];
-        $mangaController->listMangasFromGenre($id);
-        break;    
+        $genreController->showGenre($id);
+        break;
+    case 'listMangasFormGenre':
+
+        $id = $params[1];
+        $genreController->listMangasFromGenre($id);
+        break;
     case 'addGenre':
-        
+
         $genreController->addGenre();
         break;
-    case 'editGenre':       
-        $id=$params[1];
+    case 'editGenre':
+        $id = $params[1];
         $genreController->editGenre($id);
         break;
-    case'deleteGenre':  
+    case 'deleteGenre':
         $id = $params[1];
         $genreController->deleteGenre($id);
         break;
-   
+
     default:
         echo ('404 Page not found');
         break;
