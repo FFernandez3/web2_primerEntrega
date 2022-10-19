@@ -78,7 +78,7 @@ class GenreController
     {
         $this->authHelper->checkLoggedIn();
         $genre = $this->model->getGenre($id); //traigo el genero para obtener la ruta a la imagen
-        $mangas = $this->genreModel->getAllMangasFromGenre($id);
+        $mangas = $this->model->getAllMangasFromGenre($id);  //aca tenia genreModel y me tiraba un error
         if (empty($mangas)) {
             $this->model->deleteGenreById($id);
             unlink($genre->imagen); //borro la imagen de mi carpeta images
