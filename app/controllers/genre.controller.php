@@ -51,7 +51,8 @@ class GenreController
         header("Location: " . BASE_URL . 'showGenres');
     }
     public function editGenre($id)
-    {
+
+    { //validar el id que me pasan por parametro!!!
         $this->authHelper->checkLoggedIn();
         $name = $_POST['name'];
         $description = $_POST['description'];
@@ -75,7 +76,7 @@ class GenreController
         header("Location: " . BASE_URL . 'showGenre/' . $id);
     }
     public function deleteGenre($id)
-    {
+    {   //verificar el id que le paso por parametro!!!!!
         $this->authHelper->checkLoggedIn();
         $genre = $this->model->getGenre($id); //traigo el genero para obtener la ruta a la imagen
         $mangas = $this->model->getAllMangasFromGenre($id);  //aca tenia genreModel y me tiraba un error
